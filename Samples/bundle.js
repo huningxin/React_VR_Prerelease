@@ -6,7 +6,7 @@
 'use strict';
 
 const child_process = require('child_process');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 const args = process.argv.slice(2);
@@ -75,7 +75,6 @@ while (!hasIndexVRJs(projectDir, build_dir)) {
   }
   projectDir = path.join(projectDir, '..');
 }
-
 new Promise((resolve, reject) => {
   if (build_dir.length > 0) {
     projectDir = path.join(projectDir, build_dir);
@@ -108,8 +107,23 @@ new Promise((resolve, reject) => {
       path.resolve(projectDir, 'vr', 'client.js'),
       path.resolve(projectDir, 'vr', 'build', 'client.bundle.js')
     ),
+     fs.copy(
+    path.resolve(projectDir, 'static_assets'),
+    path.resolve(projectDir, 'vr', 'build', 'static_assets'),
+    err => {
+      if (err) return console.error("Copy satic_assets failed : " + err);
+      console.log("Copy static_assets success !");
+  }),
+  fs.copy(
+    path.resolve(projectDir, 'vr', 'index-release.html'),
+    path.resolve(projectDir, 'vr', 'build', 'index.html'),
+    err => {
+      if (err) return console.error("Copy index.html failed : " + err);
+      console.log("Copy index.html success !");
+  }),
   ]);
 }).then(() => {
+ 
   console.log(
     'Production versions were successfully built.' +
     'They can be found at ' + path.resolve(projectDir, 'vr', 'build')

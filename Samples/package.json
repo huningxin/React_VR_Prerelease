@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prebundle": "node -e \"try{require('fs').statSync('node_modules')}catch(e){process.exit(1)}\" || npm install",
-    "bundle": "node bundle.js"
+    "bundle": "set BABEL_DISABLE_CACHE=1 && node bundle.js"
   },
   "dependencies": {
     "ovrui": "~0.1.0",
@@ -15,6 +15,7 @@
     "three": "^0.80.1",
     "react-vr": "~0.1.0",
     "react-vr-web": "~0.1.0",
-    "xopen": "1.0.0"
+    "xopen": "1.0.0",
+    "fs-extra": "*"
   }
 }
