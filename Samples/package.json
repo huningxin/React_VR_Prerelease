@@ -1,0 +1,21 @@
+{
+  "name": "React_Samples",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "prebundle": "node -e \"try{require('fs').statSync('node_modules')}catch(e){process.exit(1)}\" || npm install",
+    "bundle": "set BABEL_DISABLE_CACHE=1 && node bundle.js"
+  },
+  "dependencies": {
+    "ovrui": "~0.1.0",
+    "ovr-audio": "~0.1.0",
+    "ovr-video": "~0.1.0",
+    "react": "15.4.1",
+    "react-native": "0.42.0",
+    "three": "^0.80.1",
+    "react-vr": "~0.1.0",
+    "react-vr-web": "~0.1.0",
+    "xopen": "1.0.0",
+    "fs-extra": "*"
+  }
+}

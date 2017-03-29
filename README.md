@@ -7,4 +7,8 @@ Getting Started:
   4) Access the samples at http://localhost:8081/Samples
      or, run `npm run open` to open the page in your default browser
 
+Build Samples:
+  1) Go to Samples directory, run `npm run bundle SAMPLE_FOLDER_NAME`
+  2) Go to the sample folder you built and find folder vr/build, deploy an http server here and the sample should run
+
 Documentation for React VR can be found in this package at `docs/index.html`
